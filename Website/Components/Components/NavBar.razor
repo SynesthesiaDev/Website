@@ -1,0 +1,58 @@
+﻿<nav class="nav">
+    <a class="path" href="/">/syndev</a>
+
+    <div class="links">
+        @foreach (var route in Route.Routes)
+        {
+            <a href="@route.Url">@route.Name</a>
+        }
+    </div>
+</nav>
+
+
+<style>
+    .nav {
+        height: 60px;
+        padding: 0 36px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        background-color: var(--background-1);
+        border-radius: 32px 32px 0 0;
+
+        font-family: inherit;
+    }
+
+    .path {
+        color: var(--text-muted);
+        text-decoration: none;
+    }
+
+    @@media (max-width: 480px) {
+        .path {
+            visibility: hidden;
+        }
+    }
+
+    .links {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+    }
+
+    .links a {
+        color: var(--text-muted);
+        text-decoration: none;
+    }
+
+    .links a:hover,
+    .links a[aria-current="page"] {
+        color: var(--text);
+    }
+</style>
+
+@code {
+
+}

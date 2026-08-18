@@ -1,0 +1,49 @@
+﻿@code {
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; } = null!;
+
+    [Parameter]
+    public string Name { get; set; } = null!;
+
+    [Parameter]
+    public string Url { get; set; } = null!;
+
+}
+
+<a href="@Url" target="_blank" class="button">
+    @ChildContent
+    <p>@Name</p>
+</a>
+
+<style>
+    .button {
+        background-color: #222A3D;
+        border-radius: 20px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 156px;
+        height: 46px;
+        font-size: 18px;
+        color: #C2C7DE;
+        transition: background-color 0.15s cubic-bezier(0.33, 1, 0.68, 1);
+    }
+
+    .button:hover {
+        background-color: #333F59;
+    }
+
+    a, a:hover, a:visited, a:active {
+        text-decoration: none;
+        color: #C2C7DE;
+    }
+
+    @@media (max-width: 480px) {
+        .button {
+            width: calc(50% - 5px);
+        }
+    }
+</style>

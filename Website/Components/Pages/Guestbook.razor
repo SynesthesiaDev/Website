@@ -1,0 +1,78 @@
+﻿@page "/guestbook"
+@rendermode InteractiveServer
+@using Synesthesia.Utils.Extensions
+@using Website.Components.Components
+@inject IHttpContextAccessor httpContextAccessor
+
+@code
+{
+    private string? error;
+    private static List<GuestbookEntry> entries => GuestbookEntry.DATABASE_COLLECTION.Values.ToList();
+    private static readonly Dictionary<string, DateTime> last_submission_times = new();
+
+    private readonly GuestbookEntry entry = new GuestbookEntry(
+        name: string.Empty,
+        url: null,
+        text: string.Empty,
+        time: DateTimeOffset.Now.ToUnixTimeMilliseconds());
+
+    private void submit()
+    {
+        error = entry.Validate();
+        if (error != null) return;
+
+        var ipAddress = httpContextAccessor.HttpContext?.Connection.RemoteIpAddress?.ToString() ?? "unknown";
+        if (last_submission_times.TryGetValue(ipAddress, out var lastTime))
+        {
+            var timePassed = DateTime.UtcNow - lastTime;
+            if (timePassed.TotalMinutes < 10)
+            {
+                error = "Rate limited";
+                return;
+            }
+        }
+
+        last_submission_times[ipAddress] = DateTime.UtcNow;
+        entry.Time = DateTimeOffset.Now.ToUnixTimeMilliseconds();
+
+        GuestbookEntry.DATABASE_COLLECTION.Insert(Guid.NewGuid(), entry);
+
+        entry.Name = "";
+        entry.Url = null;
+        entry.Text = "";
+
+        StateHasChanged();
+    }
+}
+
+<section class="guestbook">
+    <!-- Just a standard div container, no EditForm -->
+    <div class="guestbook-form">
+        <input id="guestbook-name" placeholder="your name" @bind="entry.Name"/>
+        <input id="guestbook-website" placeholder="your website (optional)" @bind="entry.Url"/>
+        <textarea id="guestbook-message" placeholder="your message" @bind="entry.Text"></textarea>
+
+        <!-- Regular button with a standard C# click handler -->
+        <button type="button" id="guestbook-submit" @onclick="submit">submit!</button>
+        @if (error != null)
+        {
+            <p class="error">@error</p>
+        }
+    </div>
+
+    <div class="guestbook-divider" aria-hidden="true"></div>
+
+    <section id="guestbook-entries" class="guestbook-entries">
+        @foreach (var guestbookEntry in entries.Reversed())
+        {
+            <GuestbookEntryComponent Entry="guestbookEntry"/>
+        }
+    </section>
+</section>
+
+
+<style>
+    .error {
+        color: indianred;
+    }
+</style>

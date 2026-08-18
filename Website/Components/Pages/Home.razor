@@ -1,0 +1,54 @@
+﻿@using Website.Components.Components
+@using Website.Components.Icons
+@page "/"
+
+<HeaderLine>
+    <ProfileWrapper>
+        <img src="static/profile.webp" class="profile-picture" alt="logo">
+        <img src="static/cat_ears.png" class="cat-ears" alt="logo">
+    </ProfileWrapper>
+    <div class="intro-text">
+        <p class="text">Hi! I'm</p>
+        <h1>Synesthesia</h1>
+    </div>
+</HeaderLine>
+
+<Gap size="20px"></Gap>
+<p class="text">A C# Developer building the things I wish existed. Purely fueled by a questionable amount of
+    caffeine and even more questionable sleep schedule!</p>
+
+<Gap size="20px"></Gap>
+<div class="socials">
+    <SocialButton Name="Twitter" Url="https://x.com/synesthesiadev_"><TwitterIcon/></SocialButton>
+    <SocialButton Name="Github" Url="https://github.com/SynesthesiaDev"><GithubIcon/></SocialButton>
+    <SocialButton Name="Ko-fi" Url="https://buymeacoffee.com/synesthesiadev"><KofiIcon/></SocialButton>
+</div>
+<Gap size="40px"></Gap>
+<p class="subtext">Cool People:</p>
+<div>
+    <a href="https://flux.moe/"><img alt="flux" src="https://flux.moe/button.gif"></a>
+</div>
+<a class="subtext" href="static/syndev.png">Add me!!</a>
+
+<style>
+    .intro-text {
+        min-width: 0;
+        flex: 1 1 auto;
+    }
+
+    .intro-text h1 {
+        overflow-wrap: anywhere;
+    }
+
+    .socials {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    @@media (max-width: 480px) {
+        .intro-text h1 {
+            font-size: 32px;
+        }
+    }
+</style>

@@ -1,0 +1,106 @@
+﻿@code {
+
+    [Parameter]
+    public Project Project { get; set; } = null!;
+
+}
+
+<article class="project-card">
+    <header class="project-header">
+        <a href="@Project.Url">@Project.Name</a>
+    </header>
+
+    <p class="project-description">@Project.Description</p>
+
+    <div class="divider"></div>
+
+    <ul class="tags" aria-label="Project technologies">
+        @foreach (var tag in Project.Tags)
+        {
+            <li>@tag</li>
+        }
+    </ul>
+</article>
+
+<style>
+    .project-card {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 28px 32px 24px;
+
+        background: #080e1d;
+        border: 1px solid #1d2a44;
+        border-radius: 24px;
+
+        color: #c8d4ff;
+    }
+
+    .project-header {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        margin-bottom: 24px;
+    }
+
+    .project-icon {
+        font-size: 34px;
+        line-height: 1;
+    }
+
+    .project-header a {
+        margin: 0;
+
+        font-size: 24px;
+        line-height: 1;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+
+        color: #b8c8ff;
+    }
+
+    a, a:hover, a:visited, a:active {
+        text-decoration: none;
+    }
+    
+    .project-description {
+        max-width: 560px;
+        margin: 0 0 42px;
+
+        font-size: 20px;
+        line-height: 1.3;
+        letter-spacing: 0.03em;
+
+        color: var(--text-onlyslightlymuted);
+    }
+
+    .divider {
+        height: 1px;
+        margin-bottom: 16px;
+
+        background: #1c2943;
+    }
+
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+
+        margin: 0;
+        padding: 0;
+
+        list-style: none;
+    }
+
+    .tags li {
+        padding: 4px 16px 5px;
+
+        background: #202b45;
+        border-radius: 999px;
+
+        font-size: 16px;
+        line-height: 1;
+        letter-spacing: 0.04em;
+
+        color: #b6c4ee;
+    }
+</style>

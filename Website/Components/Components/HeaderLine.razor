@@ -1,0 +1,21 @@
+﻿<div class="header">
+    @ChildContent
+</div>
+
+<style>
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 20px;
+        margin-bottom: 20px;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+</style>
+
+@code
+{
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+}

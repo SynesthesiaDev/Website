@@ -1,0 +1,29 @@
+﻿<div class="window">
+    <NavBar/>
+
+    <main class="content">
+        @ChildContent
+    </main>
+</div>
+
+
+<style>
+    .window {
+        width: min(92vw, 950px);
+        min-height: 720px;
+
+        background: #0B1428;
+        border-radius: 32px;
+        overflow: hidden;
+    }
+
+    .content {
+        padding: 60px 55px;
+    }
+</style>
+
+@code
+{
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+}

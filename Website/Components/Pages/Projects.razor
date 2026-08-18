@@ -1,0 +1,19 @@
+﻿@page "/projects"
+@using Website.Components.Components
+
+<section class="projects-list">
+    @foreach (var project in Project.Projects)
+    {
+        <ProjectCard Project="project"/>
+    }
+</section>
+
+
+<style>
+    .projects-list {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        width: 100%;
+    }
+</style>

@@ -1,0 +1,20 @@
+﻿@using Synesthesia.Utils.Extensions
+
+@code {
+
+    [Parameter]
+    public GuestbookEntry Entry { get; set; } = null!;
+
+}
+
+<article class="guestbook-entry">
+    <header class="entry-header">
+        <strong>@Entry.Name</strong>
+        @if (Entry.Url != null)
+        {
+            <a href=@Entry.Url target="_blank" rel="noreferrer">@Entry.Url</a>
+        }
+        <time>@Entry.Time.ToDateTime().ToProperlyFormatted()</time>
+    </header>
+    <p>@Entry.Text</p>
+</article>
