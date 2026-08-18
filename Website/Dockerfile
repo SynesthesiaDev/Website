@@ -9,10 +9,10 @@ FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["Website/Website.csproj", "Website/"]
-RUN dotnet restore "Website/Website.csproj" -r linux-arm64
+RUN dotnet restore "Website/Website.csproj"
 COPY . .
 WORKDIR "/src/Website"
-RUN dotnet build "./Website.csproj" -c $BUILD_CONFIGURATION -o /app/build -r linux-arm64
+RUN dotnet build "./Website.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
