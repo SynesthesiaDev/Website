@@ -2,7 +2,7 @@
 
 public record Project(string Name, string Url, string Description, List<string> Tags)
 {
-    public static readonly List<Project> Projects =
+    public static readonly List<Project> PROJECTS =
     [
         new Project(
             "🧪 Synesthesia",

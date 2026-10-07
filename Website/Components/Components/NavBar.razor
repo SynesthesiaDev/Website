@@ -2,13 +2,12 @@
     <a class="path" href="/">/syndev</a>
 
     <div class="links">
-        @foreach (var route in Route.Routes)
+        @foreach (var route in Route.ROUTES)
         {
             <a href="@route.Url">@route.Name</a>
         }
     </div>
 </nav>
-
 
 <style>
     .nav {
@@ -25,6 +24,10 @@
         font-family: inherit;
     }
 
+    a {
+        transition: color 0.30s cubic-bezier(0.33, 1, 0.68, 1);
+    }
+
     .path {
         color: var(--text-muted);
         text-decoration: none;
@@ -33,6 +36,29 @@
     @@media (max-width: 480px) {
         .path {
             visibility: hidden;
+            display: none;
+        }
+
+        .nav {
+            padding: 0 16px;
+            justify-content: center;
+        }
+
+        .links {
+            gap: 16px;
+            white-space: nowrap;
+            overflow-x: auto;
+            padding-bottom: 4px;
+
+            scrollbar-width: none;
+        }
+
+        .links::-webkit-scrollbar {
+            display: none;
+        }
+
+        .links a {
+            font-size: 14px;
         }
     }
 
@@ -45,11 +71,14 @@
     .links a {
         color: var(--text-muted);
         text-decoration: none;
+        transition: color 0.30s cubic-bezier(0.33, 1, 0.68, 1);
     }
 
     .links a:hover,
     .links a[aria-current="page"] {
         color: var(--text);
+        transition: color 0.30s cubic-bezier(0.33, 1, 0.68, 1);
+
     }
 </style>
 

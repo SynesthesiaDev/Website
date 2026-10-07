@@ -9,7 +9,7 @@
     </ProfileWrapper>
     <div class="intro-text">
         <p class="text">Hi! I'm</p>
-        <h1>Synesthesia</h1>
+        <h1 tabindex="-1">Synesthesia</h1>
     </div>
 </HeaderLine>
 
@@ -31,6 +31,10 @@
 <a class="subtext" href="static/syndev.png">Add me!!</a>
 
 <style>
+    h1:focus, h1:focus-visible {
+        outline: none;
+    }
+
     .intro-text {
         min-width: 0;
         flex: 1 1 auto;

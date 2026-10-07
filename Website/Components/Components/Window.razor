@@ -10,15 +10,40 @@
 <style>
     .window {
         width: min(92vw, 950px);
-        min-height: 720px;
 
-        background: #0B1428;
+        height: min(92vh, 720px);
+        display: flex;
+        flex-direction: column;
+
+        background: var(--background-0);
         border-radius: 32px;
         overflow: hidden;
     }
 
+    .window > *:not(.content) {
+        flex-shrink: 0;
+    }
+
     .content {
+        flex: 1 1 auto;
+        min-height: 0;
         padding: 60px 55px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        scrollbar-width: thin;
+        scrollbar-color: var(--text-muted) transparent;
+        display: flex;
+        flex-direction: column;
+    }
+
+    @@media (max-width: 760px) {
+    .window {
+        height: auto;
+        min-height: 92vh;
+    }
+    .content {
+        overflow-y: visible;
+    }
     }
 </style>
 

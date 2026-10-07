@@ -2,7 +2,7 @@
 
 public record Route(string Name, string Url)
 {
-    public static readonly List<Route> Routes =
+    public static readonly List<Route> ROUTES =
     [
         new Route("Home", "/"),
         new Route("Projects", "/projects"),

@@ -1,4 +1,4 @@
-﻿<div style="@GetStyle()"></div>
+﻿<div style="@getStyle()"></div>
 
 @code {
     [Parameter]
@@ -7,7 +7,7 @@
     [Parameter]
     public string Direction { get; set; } = "vertical";
 
-    private string GetStyle()
+    private string getStyle()
     {
         return Direction == "vertical" 
             ? $"height: {Size};" 

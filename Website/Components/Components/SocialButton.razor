@@ -18,7 +18,7 @@
 
 <style>
     .button {
-        background-color: #222A3D;
+        background-color: var(--background-2);
         border-radius: 20px;
         text-decoration: none;
         display: flex;
@@ -29,16 +29,25 @@
         height: 46px;
         font-size: 18px;
         color: #C2C7DE;
-        transition: background-color 0.15s cubic-bezier(0.33, 1, 0.68, 1);
+        transition: background-color 0.30s cubic-bezier(0.33, 1, 0.68, 1);
+    }
+
+    @@media (max-width: 480px) {
+        .button {
+            width: 100%;
+            max-width: 300px;
+            font-size: 16px;
+        }
     }
 
     .button:hover {
-        background-color: #333F59;
+        background-color: var(--background-2-hovered);
+        transition: background-color 0.30s cubic-bezier(0.33, 1, 0.68, 1);
     }
 
     a, a:hover, a:visited, a:active {
         text-decoration: none;
-        color: #C2C7DE;
+        color: var(--text);
     }
 
     @@media (max-width: 480px) {
