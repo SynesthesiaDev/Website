@@ -23,16 +23,22 @@ public record Project(string Name, string Url, string Description, List<string> 
             ["C#", ".NET 10"]
         ),
         new Project(
-            "🌸 Chibi",
-            "https://github.com/SynesthesiaDev/Chibi",
-            "Tiny and type-safe managed Windows library for lifecycle management and window creation",
-            ["C#", ".NET 10", "Win32 API"]
-        ),
-        new Project(
             "🧬 Codon",
             "https://github.com/SynesthesiaDev/Codon",
             "Explicit, version-aware serialization library for .NET with zero reflection or source generation",
             ["C#", ".NET 10", "DotNetty", "Binary Protocols", "Serialization"]
+        ),
+        new Project(
+            "🐧 Endmin",
+            "https://github.com/SynesthesiaDev/Endmin",
+            "A tiny self-hosted pull-based deployment manager for Docker containers",
+            ["C#", ".NET 10", "Docker", "Github API"]
+        ),
+        new Project(
+            "🌸 Chibi",
+            "https://github.com/SynesthesiaDev/Chibi",
+            "Tiny and type-safe managed Windows library for lifecycle management and window creation",
+            ["C#", ".NET 10", "Win32 API"]
         ),
     ];
 }
